@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MC Tiers</title>
+  <style>
+    body { background:#0f172a; color:#e5e7eb; font-family:Arial, sans-serif; margin:0; padding:16px; }
+    h1 { text-align:center; }
+    .container { display:grid; grid-template-columns: 1fr 2fr; gap:16px; }
+    .items, .tiers { background:#020617; border-radius:12px; padding:12px; }
+    .item { background:#1f2937; padding:8px; margin:6px 0; border-radius:8px; cursor:grab; }
+    .tier { margin-bottom:12px; border-radius:10px; padding:8px; }
+    .tier h3 { margin:0 0 6px 0; }
+    .S { background:#14532d; }
+    .A { background:#064e3b; }
+    .B { background:#1e3a8a; }
+    .C { background:#312e81; }
+    .D { background:#4c1d95; }
+    .dropzone { min-height:40px; background:#020617; border-radius:8px; padding:6px; }
+  </style>
+</head>
+<body>
+  <h1>🔥 MC TIERS 🔥</h1>
+  <div class="container">
+    <div class="items">
+      <h2>Items</h2>
+      <div class="item" draggable="true">Netherite Sword</div>
+      <div class="item" draggable="true">Diamond Sword</div>
+      <div class="item" draggable="true">Iron Sword</div>
+      <div class="item" draggable="true">Crystal PvP</div>
+      <div class="item" draggable="true">Mace PvP</div>
+    </div>
+    <div class="tiers">
+      <div class="tier S"><h3>S Tier</h3><div class="dropzone"></div></div>
+      <div class="tier A"><h3>A Tier</h3><div class="dropzone"></div></div>
+      <div class="tier B"><h3>B Tier</h3><div class="dropzone"></div></div>
+      <div class="tier C"><h3>C Tier</h3><div class="dropzone"></div></div>
+      <div class="tier D"><h3>D Tier</h3><div class="dropzone"></div></div>
+    </div>
+  </div>
+
+  <script>
+    let dragged;
+    document.addEventListener('dragstart', e => { if(e.target.classList.contains('item')) dragged = e.target; });
+    document.querySelectorAll('.dropzone').forEach(zone => {
+      zone.addEventListener('dragover', e => e.preventDefault());
+      zone.addEventListener('drop', e => { e.preventDefault(); if(dragged) zone.appendChild(dragged); });
+    });
+  </script>
+</body>
+</html>
